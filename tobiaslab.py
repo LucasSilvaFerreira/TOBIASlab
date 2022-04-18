@@ -1,6 +1,6 @@
 import os
 import subprocess
-def run_tobias(BAM_FILE_A, BAM_FILE_B, PEAKS_USE, BAM_FILE_A_TAG_NAME, BAM_FILE_B_TAG_NAME, CORES=4, GENOME_FILE='hg19.fa', MOTIF='JASPAR2022_CORE_vertebrates_non-redundant_pfms_jaspar.txt',DEBUG=False):
+def run_tobias(BAM_FILE_A, BAM_FILE_B, PEAKS_USE, BAM_FILE_A_TAG_NAME, BAM_FILE_B_TAG_NAME, ANALYSIS_NAME, CORES=4, GENOME_FILE='hg19.fa', MOTIF='JASPAR2022_CORE_vertebrates_non-redundant_pfms_jaspar.txt',DEBUG=False):
   '''
     Description:
         This function will run TOBIAS on the two bam files and the peak file.
@@ -19,6 +19,8 @@ def run_tobias(BAM_FILE_A, BAM_FILE_B, PEAKS_USE, BAM_FILE_A_TAG_NAME, BAM_FILE_
             The name of the first sample
         BAM_FILE_B_TAG_NAME: str
             The name of the second sample
+        ANALYSIS_NAME : str
+          a name for the out analysis ex: promoter_h1_x_h3
         CORES: int
             The number of cores to use.
         GENOME_FILE: str
@@ -35,6 +37,7 @@ def run_tobias(BAM_FILE_A, BAM_FILE_B, PEAKS_USE, BAM_FILE_A_TAG_NAME, BAM_FILE_
                     '/path/to/peak/file.bed',
                     'sample_A',
                     'sample_B',
+                    treatment_x_control,
                      4,
                     'JASPAR2022_CORE_vertebrates_non-redundant_pfms_jaspar.txt', False)
   '''
@@ -47,7 +50,7 @@ def run_tobias(BAM_FILE_A, BAM_FILE_B, PEAKS_USE, BAM_FILE_A_TAG_NAME, BAM_FILE_
   TOBIAS ATACorrect --bam  {BAM_FILE_B} --genome hg19.fa --peaks {PEAKS_USE} --blacklist hg19-blacklist.v2.bed --outdir ATACorrect_BAM_FILE_B --cores {CORES} ;
   TOBIAS FootprintScores --signal ATACorrect_BAM_FILE_A/{BAM_FILE_A_NAME}_corrected.bw --regions {PEAKS_USE} --output {BAM_FILE_A_TAG_NAME}_footprints.bw --cores {CORES} ;
   TOBIAS FootprintScores --signal ATACorrect_BAM_FILE_B/{BAM_FILE_B_NAME}_corrected.bw --regions {PEAKS_USE} --output {BAM_FILE_B_TAG_NAME}_footprints.bw --cores {CORES} ;
-  TOBIAS BINDetect --motifs {MOTIFS} --signals {BAM_FILE_A_TAG_NAME}_footprints.bw  {BAM_FILE_B_TAG_NAME}_footprints.bw --genome hg19.fa --peaks {PEAKS_USE}  --outdir BINDetect_output --cond_names {BAM_FILE_A_TAG_NAME} {BAM_FILE_B_TAG_NAME} --cores {CORES}
+  TOBIAS BINDetect --motifs {MOTIFS} --signals {BAM_FILE_A_TAG_NAME}_footprints.bw  {BAM_FILE_B_TAG_NAME}_footprints.bw --genome hg19.fa --peaks {PEAKS_USE}  --outdir BINDetect_output_{ANALYSIS_NAME} --cond_names {BAM_FILE_A_TAG_NAME} {BAM_FILE_B_TAG_NAME} --cores {CORES}
 
 
   '''
