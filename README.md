@@ -1,5 +1,15 @@
 # TOBIASlab
 Run tobias pipeline on colab
+I need to fix this documentation.  
+
+
+```
+README.md pyHomer Using python to create a simple homer python functions
+
+pip install git+https://github.com/LucasSilvaFerreira/homer_motif.git
+```
+
+
 ####`run_tobias(BAM_FILE_A, BAM_FILE_B, PEAKS_USE, BAM_FILE_A_TAG_NAME, BAM_FILE_B_TAG_NAME, CORES=4, GENOME_FILE='hg19.fa', MOTIF='JASPAR2022_CORE_vertebrates_non-redundant_pfms_jaspar.txt',DEBUG=False):`
 
 `Description:`  
@@ -9,20 +19,24 @@ The TOBIAS functions used will be:
     -FootprintScores  
     -BINDetect  
 `Parameters:`  
-  __BAM_FILE_A: str__  
+ ```BAM_FILE_A: str  
       -The path to the first bam file.  
-  __BAM_FILE_B: str__  
-      -The path to the second bam file.  
-__PEAKS_USE: str__  
-    -The path to the peak file.  
-__BAM_FILE_A_TAG_NAME: str__  
-    -The name of the first sample  
-__BAM_FILE_B_TAG_NAME: str__ 
-    -The name of the second sample  
-__CORES: int__   
-    -The number of cores to use.  
-__GENOME_FILE: str__  
-    -The path to the genome file. Default is hg19.fa  
+```
+
+ ``` BAM_FILE_B: str  
+      -The path to the second bam file. 
+ ```
+ 
+```__PEAKS_USE: str__  
+    -The path to the peak file.  ```
+```__BAM_FILE_A_TAG_NAME: str__  
+    -The name of the first sample  ```
+```__BAM_FILE_B_TAG_NAME: str__ 
+    -The name of the second sample  ```
+```__CORES: int__   
+    -The number of cores to use.  ```
+```__GENOME_FILE: str__  
+    -The path to the genome file. Default is hg19.fa  ```
 __MOTIF: str__
     -The path to the motif file. The default is JASPAR2022_CORE_vertebrates_non-redundant_pfms_jaspar.txt  
 __DEBUG: bool__  
