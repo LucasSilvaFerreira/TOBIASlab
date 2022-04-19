@@ -1,6 +1,6 @@
 # TOBIASlab
-Run tobias pipeline on colab  
-I need to fix this documentation.  
+This are simple commands  to run DE TOBIAS analysis on colab!  
+Check the tobias documentation to have additional analysis using the metafiles generated on this pipeline.  
 
 
 ```
