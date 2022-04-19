@@ -1,4 +1,4 @@
-import os
+import os 
 import subprocess
 def run_tobias(BAM_FILE_A, BAM_FILE_B, PEAKS_USE, BAM_FILE_A_TAG_NAME, BAM_FILE_B_TAG_NAME, ANALYSIS_NAME, CORES=4, GENOME_FILE='hg19.fa', MOTIF='JASPAR2022_CORE_vertebrates_non-redundant_pfms_jaspar.txt',DEBUG=False):
   '''
