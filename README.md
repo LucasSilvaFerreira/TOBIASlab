@@ -48,7 +48,7 @@ pip install git+https://github.com/LucasSilvaFerreira/TOBIASlab.git
 
   This function will install TOBIAS on a Google Colab.
   The conda install can reinitialize the environment. It can be needed run this function twice before run the pipeline
-  This command will download the hg19 genome
+  This command will download the hg19 genome and the hg19 regions blacklist
 
 ```  
 
