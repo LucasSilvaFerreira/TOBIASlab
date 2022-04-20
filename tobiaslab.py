@@ -59,7 +59,9 @@ def run_tobias(BAM_FILE_A, BAM_FILE_B, PEAKS_USE, BAM_FILE_A_TAG_NAME, BAM_FILE_
   else:
       print(cmd)
       # subprocess.run(cmd, shell=True)
-      !$cmd
+      #!$cmd
+      subprocess.run(cmd, shell=True)
+
 
 
 def install_tobias_colab():
@@ -69,15 +71,17 @@ def install_tobias_colab():
       The conda install can reinitialize the environment. It can be needed run this function twice before run the pipeline
       This command will download the hg19 genome
   '''
-  #execute the first time running the session 
-  !pip install -q condacolab
+  #execute the first time running the session
+  subprocess.run('pip install -q condacolab', shell=True)
   import condacolab
   condacolab.install()
-  !git clone https://github.com/loosolab/TOBIAS.git; cd TOBIAS; mamba env update -n base -f tobias_env.yaml 
-  !mamba install tobias -c bioconda
-  !mamba install ipykernel
-  !wget http://hgdownload.cse.ucsc.edu/goldenpath/hg19/bigZips/hg19.fa.gz
-  !gunzip -d hg19.fa.gz
-  !wget https://raw.githubusercontent.com/Boyle-Lab/Blacklist/master/lists/hg19-blacklist.v2.bed.gz
-  !gunzip -d hg19-blacklist.v2.bed.gz
-  !wget https://jaspar.genereg.net/download/data/2022/CORE/JASPAR2022_CORE_vertebrates_non-redundant_pfms_jaspar.txt
+  cmd_test = '''git clone https://github.com/loosolab/TOBIAS.git; cd TOBIAS; mamba env update -n base -f tobias_env.yaml ;
+  mamba install tobias -c bioconda ;
+  mamba install ipykernel ;
+  wget http://hgdownload.cse.ucsc.edu/goldenpath/hg19/bigZips/hg19.fa.gz ;
+  gunzip -d hg19.fa.gz ;
+  wget https://raw.githubusercontent.com/Boyle-Lab/Blacklist/master/lists/hg19-blacklist.v2.bed.gz ;
+  gunzip -d hg19-blacklist.v2.bed.gz ;
+  wget https://jaspar.genereg.net/download/data/2022/CORE/JASPAR2022_CORE_vertebrates_non-redundant_pfms_jaspar.txt '''
+  subprocess.run(cmd_test, shell=True)
+
