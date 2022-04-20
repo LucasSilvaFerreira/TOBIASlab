@@ -2,6 +2,9 @@
 This are simple commands  to run DE TOBIAS analysis on colab!  
 Check the tobias documentation to have additional analysis using the metafiles generated on this pipeline.  
 
+from tobiaslab import install_tobias_colab , run_tobias  
+
+
 
 ```
 
