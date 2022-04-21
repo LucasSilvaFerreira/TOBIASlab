@@ -83,7 +83,6 @@ def install_tobias_colab():
   wget https://raw.githubusercontent.com/Boyle-Lab/Blacklist/master/lists/hg19-blacklist.v2.bed.gz ;
   gunzip -d hg19-blacklist.v2.bed.gz ;
   wget https://jaspar.genereg.net/download/data/2022/CORE/JASPAR2022_CORE_vertebrates_non-redundant_pfms_jaspar.txt '''
-  subprocess.run(cmd_test, shell=True)
   for c in cmd_test.split('\n'):
     print (c)
     r = subprocess.run(c, shell=True, capture_output=True)
