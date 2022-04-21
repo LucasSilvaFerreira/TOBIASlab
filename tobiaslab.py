@@ -1,6 +1,6 @@
 import os 
 import subprocess
-def run_tobias(BAM_FILE_A, BAM_FILE_B, PEAKS_USE, BAM_FILE_A_TAG_NAME, BAM_FILE_B_TAG_NAME, ANALYSIS_NAME, CORES=4, GENOME_FILE='hg19.fa', MOTIF='JASPAR2022_CORE_vertebrates_non-redundant_pfms_jaspar.txt',DEBUG=False):
+def run_tobias(BAM_FILE_A, BAM_FILE_B, PEAKS_USE, BAM_FILE_A_TAG_NAME, BAM_FILE_B_TAG_NAME, ANALYSIS_NAME, CORES=4, GENOME_FILE='hg19.fa', MOTIFS='JASPAR2022_CORE_vertebrates_non-redundant_pfms_jaspar.txt',DEBUG=False):
   '''
     Description:
         This function will run TOBIAS on the two bam files and the peak file.
@@ -51,7 +51,6 @@ def run_tobias(BAM_FILE_A, BAM_FILE_B, PEAKS_USE, BAM_FILE_A_TAG_NAME, BAM_FILE_
   TOBIAS FootprintScores --signal ATACorrect_BAM_FILE_A/{BAM_FILE_A_NAME}_corrected.bw --regions {PEAKS_USE} --output {BAM_FILE_A_TAG_NAME}_footprints.bw --cores {CORES} ;
   TOBIAS FootprintScores --signal ATACorrect_BAM_FILE_B/{BAM_FILE_B_NAME}_corrected.bw --regions {PEAKS_USE} --output {BAM_FILE_B_TAG_NAME}_footprints.bw --cores {CORES} ;
   TOBIAS BINDetect --motifs {MOTIFS} --signals {BAM_FILE_A_TAG_NAME}_footprints.bw  {BAM_FILE_B_TAG_NAME}_footprints.bw --genome hg19.fa --peaks {PEAKS_USE}  --outdir BINDetect_output_{ANALYSIS_NAME} --cond_names {BAM_FILE_A_TAG_NAME} {BAM_FILE_B_TAG_NAME} --cores {CORES}
-
 
   '''
   if DEBUG:
